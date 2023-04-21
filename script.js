@@ -9,25 +9,24 @@ const search = document.getElementById('query');
 returnMovies(apiLink);
 
 function returnMovies(url) {
-    fetch(url).then(res => res.json()).then(function(data)) {
+    fetch(url).then(res => res.json()).then(function(data) {
         console.log(data.results);
         data.results.forEach(element => {
-            const divCard = document.createElement('div');
-            divCard.setAttribute('class','card');
+            const divCard = document.createElement('div');   // Allows to create HTML elements on a webpage
+            divCard.setAttribute('class','card');            // Allows to set attributes of HTML elements
             const divRow = document.createElement('div');
-            divRow.setAttribute('class','card');
+            divRow.setAttribute('id','row');
             const divColumn = document.createElement('div');
-            divColumn.setAttribute('class','card');
+            divColumn.setAttribute('id','column');
             const image = document.createElement('img');
-            image.setAttribute('class','card');
-            image.setAttribute('class','card');
+            image.setAttribute('class','thumbnail');
+            image.setAttribute('id','image');
             const title = document.createElement('h3');
-            title.setAttribute('class','card');
+            title.setAttribute('id','title');
             const center = document.createElement('center');
-            center.setAttribute('class','card');
 
             title.innerHTML = `${element.title}`;
-            image.scr = imgPath + element.poster_path;
+            image.src = imgPath + element.poster_path;
             
             center.appendChild(image);
             divCard.appendChild(center);
@@ -37,7 +36,7 @@ function returnMovies(url) {
 
             main.appendChild(divRow);
         });
-    }
+    });
 }
 
 form.addEventListener("submit", (e) => {
